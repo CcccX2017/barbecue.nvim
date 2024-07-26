@@ -156,6 +156,8 @@ function M.get_file_icon(filename, filetype)
   local basename = vim.fn.fnamemodify(filename, ":t")
   local extension = string.match(basename, "%.(.*)")
 
+  if not basename or not extension then return end
+
   local icons = devicons.get_icons()
   local icon = icons[basename] or icons[extension]
   if not icon then
